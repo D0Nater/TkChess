@@ -27,9 +27,7 @@ class BaseFigure(ABC):
         steps = []
 
         for r, c in steps_map:
-            if r < 0 or c < 0:
-                continue
-            if r > 7 or c > 7:
+            if not (0 <= r <= 7 and 0 <= c <= 7):
                 continue
 
             try:

@@ -19,14 +19,12 @@ class ElephantFigure(BaseFigure):
             c = column + c_action
             steps = []
 
-            while r >= 0 and r <= 7 and c >= 0 and c <= 7:
+            while 0 <= r <= 7 and 0 <= c <= 7:
                 figure = figures_map[r][c]
                 if figure:
-                    if figure.color == self.color:
-                        break
-                    else:
+                    if figure.color != self.color:
                         steps.append([r, c])
-                        break
+                    break
 
                 steps.append([r, c])
                 r += r_action

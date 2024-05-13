@@ -19,27 +19,26 @@ class RookFigure(BaseFigure):
             c = column + c_action
             steps = []
 
-            while r >= 0 and r <= 7 and c >= 0 and c <= 7:
+            while 0 <= r <= 7 and 0 <= c <= 7:
                 figure = figures_map[r][c]
                 if figure:
-                    if figure.color == self.color:
-                        break
-                    else:
+                    if figure.color != self.color:
                         steps.append([r, c])
-                        break
+                    break
 
                 steps.append([r, c])
                 r += r_action
                 c += c_action
 
             return steps
+
         # up
         steps1 = _get_steps(-1, 0)
         # right
         steps2 = _get_steps(0, 1)
         # down
         steps3 = _get_steps(1, 0)
-        #  left
+        # left
         steps4 = _get_steps(0, -1)
 
         return self._create_steps(steps_map=[*steps1, *steps2, *steps3, *steps4], figures_map=figures_map)
